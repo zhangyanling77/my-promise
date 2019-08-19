@@ -139,6 +139,10 @@ class Promise {
     return promise2
     
   }
+
+  catch(errorCallback) { // 其实就是then的一种,没有成功的then
+    return this.then(null, errorCallback)
+  }
 }
 
 
