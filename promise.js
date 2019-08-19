@@ -143,6 +143,19 @@ class Promise {
   catch(errorCallback) { // 其实就是then的一种,没有成功的then
     return this.then(null, errorCallback)
   }
+  
+  static resolve(value) {
+    return new Promise((resolve, reject) => {
+      resolve(value)
+    })
+  }
+
+  static reject(reason) {
+    return new Promise((resolve, reject) => {
+      reject(reason)
+    })
+  }
+  
 }
 
 
