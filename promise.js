@@ -51,6 +51,9 @@ class Promise {
     this.onRejectedCallbacks = []
 
     let resolve = value => {
+      if(value instanceof Promise){
+        return value.then(resolve, reject) // 和resolvePromise的功能相同
+      }
       if(this.status === PENDING) {
         this.value  = value
         this.status = FULFILLED
