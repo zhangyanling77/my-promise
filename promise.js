@@ -75,6 +75,9 @@ class Promise {
   }
   // 原型上的方法
   then(onFullfilled, onRejected){
+    // 可选参数
+    onFullfilled = typeof onFullfilled === 'function' ? onFullfilled : val => val
+    onRejected = typeof onRejected === 'function' ? onRejected : err => { throw err }
     // 如果then方法调用后 应该返回一个新的Promise 递归调用
     let promise2 = new Promise((resolve, reject) => {
       // 应该在返回的promise中 取上一次的状态 来决定这个promise2是成功还是失败
